@@ -13,9 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Install and build
+      - name: Install and test
         run: |
           npm install
+          npm run test
+      - name: Build
+        run: |
           npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
