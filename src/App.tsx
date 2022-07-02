@@ -1,24 +1,48 @@
 import React from 'react';
+import {
+  FiAtSign,
+  FiCode,
+  FiEye,
+  FiGithub,
+  FiLinkedin,
+  FiSun,
+} from 'react-icons/fi';
+import styled from 'styled-components';
 
 import './App.css';
+import logo from './assets/abizmo-logo.svg';
+import Header from './components/Header/Header';
+import * as S from './components/UI/Buttons';
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  position: relative;
+`;
 
 function App() {
   return (
-    <div>
-      <nav>
-        <img src='' alt='abizmo' />
-        <ul>
-          <li>about</li>
-          <li>works</li>
-          <li>contact</li>
-          <li>resume</li>
-          <li>
-            <button type='button'>
-              <img src='' alt='change theme' />
-            </button>
-          </li>
-        </ul>
-      </nav>
+    <Wrapper>
+      <Header logoSrc={logo} logoAlt='abizmo'>
+        <Header.Nav>
+          <Header.NavItem>
+            <S.Link href='#about'>about</S.Link>
+          </Header.NavItem>
+          <Header.NavItem>
+            <S.Link href='#works'>Works</S.Link>
+          </Header.NavItem>
+          <Header.NavItem>
+            <S.Link href='#contact'>Contact</S.Link>
+          </Header.NavItem>
+          <Header.NavItem>
+            <S.LinkButton $openInTab href='#'>
+              Resume
+            </S.LinkButton>
+          </Header.NavItem>
+        </Header.Nav>
+        <S.Button $solid onClick={() => {}}>
+          <FiSun />
+        </S.Button>
+      </Header>
       <div>
         <h1>Hi, my name is</h1>
         <h2>Abián Izquierdo</h2>
@@ -26,9 +50,14 @@ function App() {
           I like building apps for the web and try to make your life a little
           easier.
         </p>
-        <button type='button'>Contact me</button>
+        <S.LinkButton
+          $openInTab
+          href='mailto:abizmo@gmail.com?subject=I want to meet you'
+        >
+          Contact Me
+        </S.LinkButton>
       </div>
-      <div>
+      <div id='about'>
         <h3>About Me</h3>
         <p>
           My name is Abián and I live in Las Palmas de Gran Canaria. I studied
@@ -61,7 +90,7 @@ function App() {
           <li>MongoDB</li>
         </ul>
       </div>
-      <div>
+      <div id='works'>
         <h3>Works</h3>
         <ul>
           <li>
@@ -75,19 +104,19 @@ function App() {
                   <li>Challenge from FrontendMentor.io</li>
                 </ul>
                 <div>
-                  <button type='button'>
-                    <img src='' alt='source code' />
-                  </button>
-                  <button type='button'>
-                    <img src='' alt='live-demo' />
-                  </button>
+                  <S.Link>
+                    <FiCode />
+                  </S.Link>
+                  <S.Link>
+                    <FiEye />
+                  </S.Link>
                 </div>
               </div>
             </div>
           </li>
         </ul>
       </div>
-      <div>
+      <div id='contact'>
         <h3>Contact</h3>
         <p>
           Et pariatur irure ex aute velit nulla consequat labore deserunt
@@ -97,36 +126,36 @@ function App() {
           consectetur laborum aute. Tempor consectetur do officia aliquip amet
           nisi non est.
         </p>
-        <button type='button'>Contact me</button>
+        <S.LinkButton
+          $solid
+          href='mailto:abizmo@gmail.com?subject=I want to meet you'
+        >
+          Contact Me
+        </S.LinkButton>
       </div>
       <footer>
         <ul>
           <li>
-            <a href='#' target='_blank' rel='noopener noreferrer'>
-              <img src='' alt='linkedin' />
-            </a>
+            <S.Link
+              $openInTab
+              href='https://www.linkedin.com/in/abian-izquierdo'
+            >
+              <FiLinkedin />
+            </S.Link>
           </li>
           <li>
-            <a
-              href='https://github.com/abizmo'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <img src='' alt='github' />
-            </a>
+            <S.Link $openInTab href='https://github.com/abizmo'>
+              <FiGithub />
+            </S.Link>
           </li>
           <li>
-            <a
-              href='mailto:abizmo@gmail.com'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <img src='' alt='email' />
-            </a>
+            <S.Link $openInTab href='mailto:abizmo@gmail.com'>
+              <FiAtSign />
+            </S.Link>
           </li>
         </ul>
       </footer>
-    </div>
+    </Wrapper>
   );
 }
 
